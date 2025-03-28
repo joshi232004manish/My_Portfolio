@@ -1,0 +1,609 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<!--  -->
+
+<head>
+	<title>Prologue by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+	<style>
+		.flip-container {
+			perspective: 1000px;
+			width: 300px;
+			/* Adjust as needed */
+			height: 200px;
+
+			margin-top: 25px;
+			margin-bottom: 25px;
+			/* Adjust as needed */
+		}
+
+		.flipper {
+			position: relative;
+			width: 100%;
+			box-shadow: 5px 5px 15px rgba(152, 16, 205, 0.3);
+
+			height: 100%;
+			transform-style: preserve-3d;
+			transition: transform 0.6s;
+		}
+
+		.bx:hover {}
+
+		.flip-container:hover .flipper {
+			transform: rotateY(180deg);
+		}
+
+		.front,
+		.back {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+			border-radius: 10px;
+		}
+
+		.front {
+			background: url('images/backend.jpg') no-repeat center/cover;
+		}
+
+		.text-overlay {
+			position: absolute;
+			top: 25%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			/* Semi-transparent background */
+			color: white;
+			/* padding: 10px; */
+			font-size: 16px;
+			text-align: center;
+			opacity: 0;
+			/* Initially hidden */
+			transition: opacity 0.3s ease-in-out;
+		}
+
+		.contain:hover .text-overlay {
+			opacity: 1;
+		}
+
+		.contain:hover .image-contain {
+
+			transform: translateY(-10px);
+		}
+
+		.contain:hover .img {
+
+			opacity: 0.3;
+		}
+
+
+
+
+		.contain {
+			position: relative;
+			width: 400px;
+
+		}
+
+		.image-contain {
+			width: 400px;
+			position: relative;
+			gap: 0;
+			transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
+		}
+
+
+
+		.back {
+			background: black;
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transform: rotateY(180deg);
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.education-container {
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: flex-start;
+			max-width: 1000px;
+			margin: 30px auto;
+		}
+
+		/* -------- Card (Box) Styles -------- */
+		.edu-card {
+			background: linear-gradient(135deg, #301128, #172b2b);
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			border-radius: 8px;
+			width: 300px;
+			padding: 20px;
+			color: #31c857;
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.edu-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+		}
+
+		.edu-card h3 {
+			margin: 0 0 10px;
+			font-size: 1.1rem;
+			font-weight: 600;
+		}
+
+		.edu-card p {
+			margin: 5px 0;
+			line-height: 1.5;
+			color: white;
+		}
+
+		.edu-card .date {
+			display: inline-block;
+			margin-top: 8px;
+			font-size: 0.9rem;
+			color: #605d5d;
+			font-weight: bold;
+		}
+
+		.edu-card .place {
+			display: block;
+			font-size: 0.95rem;
+			margin-top: 5px;
+			font-style: italic;
+			color: #7a7878;
+		}
+		.contact-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap; /* ensures wrapping on smaller screens */
+      justify-content: center;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Each individual box */
+    .contact-box {
+      
+	  background: linear-gradient(135deg, #301128, #172b2b);
+      
+      border-radius: 8px;
+      width: 180px;
+      height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+	  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+
+    .contact-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Icon styling */
+    .contact-box img {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+
+    /* Text styling */
+    .contact-box p {
+      margin: 0;
+      font-size: 1rem;
+      color: #bab3b3;
+      font-weight: 500;
+    }
+	</style>
+</head>
+
+<body class="is-preload">
+
+	<!-- Header -->
+	<div id="header">
+
+		<div class="top">
+
+			<!-- Logo -->
+			<div id="logo">
+				<span style="width: 100px; height: 100px; border-radius: 100px  ;  " class="image avatar48"><img
+						style=" width: 100px; height: 100px; border-radius: 100px; object-fit: cover;"
+						src="images/avatar1.jpg" alt="" /></span>
+				<h1 id="title">Manish Joshi</h1>
+				<p>Third-Year Undergraduate</p>
+				<p>IIT Bhubaneswar</p>
+			</div>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li><a href="#top" id="top-link"><span class="icon solid fa-home">About Me</span></a></li>
+					<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Skills</span></a></li>
+					<li><a href="#about" id="about-link"><span class="icon solid fa-briefcase">Projects</span></a>
+					</li>
+					<li><a href="#about" id="about-link"><span class="icon solid fa-graduation-cap">Education</span></a>
+					</li>
+
+					<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a>
+					</li>
+				</ul>
+			</nav>
+
+		</div>
+
+		<!-- <div class="bottom"> -->
+
+		<!-- Social Icons -->
+		<!-- <ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul> -->
+
+		<!-- </div> -->
+
+	</div>
+
+	<!-- Main -->
+	<div id="main">
+
+		<!-- Intro -->
+		<section id="top" class=" one dark cover">
+			<div style="height: 20px;" class="container">
+
+				<header>
+					<!-- <h4 style="font-weight: 900;">H&nbsp;E&nbsp;L&nbsp;L&nbsp;O&nbsp; ! &nbsp;&nbsp;&nbsp;  I&nbsp;'&nbsp;M</h4>
+								<h2 style="font-weight: 900;" class="alt"> M A N I S H &nbsp;&nbsp;J O S H I</h2> -->
+					<!-- <p>Ligula scelerisque justo sem accumsan diam quis<br />
+								vitae natoque dictum sollicitudin elementum.</p> -->
+				</header>
+
+				<!-- <p>My goals uhiubdsniosacnlsdic Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis eius fugiat deserunt sint eligendi voluptatum quibusdam iusto vel, odit sit excepturi ullam et expedita voluptas ab id, perspiciatis, corporis alias!</p> -->
+
+			</div>
+		</section>
+		<section id="" style="margin-bottom: 2px;" class="two ">
+			<div class="container">
+
+				<header>
+					<h4 style="font-weight: 900;color: aliceblue;">H&nbsp;E&nbsp;L&nbsp;L&nbsp;O&nbsp; !
+						&nbsp;&nbsp;&nbsp; I&nbsp;'&nbsp;M</h4>
+					<h2 style="font-weight: 900; color: aliceblue;" class="alt"> M A N I S H &nbsp;&nbsp;J O S H I</h2>
+					<p style="font-size: large; color: rgb(153, 160, 166);">I am a Third-Year Undergraduate from IIT
+						Bhubaneswar with a passion for problem-solving and collaborative projects. I enjoy working in
+						teams, engaging with new people, and learning from their unique approaches to tackling
+						challenges. My interest in technology has led me to develop frontend and backend web development
+						skills, and I actively participate in hackathons to solve real-life problems through innovative
+						solutions.</p>
+				</header>
+
+				<!-- <p>My goals uhiubdsniosacnlsdic Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis eius fugiat deserunt sint eligendi voluptatum quibusdam iusto vel, odit sit excepturi ullam et expedita voluptas ab id, perspiciatis, corporis alias!</p> -->
+
+			</div>
+		</section>
+
+		<!-- Portfolio -->
+		<section id="portfolio" style="margin-bottom: 3px;" class="two">
+			<div class="container">
+
+				<header>
+					<h2 style="color: aliceblue; font-weight: 400;">S&nbsp;K&nbsp;I&nbsp;L&nbsp;L&nbsp;S</h2>
+					<h4 style="font-weight: 500;">WHAT I DO</h4>
+				</header>
+
+
+
+				<div class="row">
+					<div class="col-4 col-12-mobile">
+						<div class="flip-container">
+							<div class="flipper">
+								<div style="position: absolute;
+								width: 100%;
+								height: 100%;
+								backface-visibility: hidden;
+								font-size: large;
+			font-weight: bold;
+								display: flex;
+			align-items: center;
+			justify-content: center;
+								border-radius: 10px;background: url('images/dsa.jpg') no-repeat center/cover;" class="">
+									<div style="background-color: black; padding-left: 5px; padding-right: 5px;">Data
+										Structure and Algorithms</div>
+
+								</div>
+								<div style="line-height: 1.2; padding: 5px;" class="back"><span
+										style="font-size: small; line-height: 1.2; ">Proficient in key Data Structures
+										(Arrays, Linked Lists, Trees, Graphs, Heaps, Hashing) and Algorithms (Sorting,
+										Searching, Dynamic Programming, Recursion)</span> </div>
+							</div>
+						</div>
+						<div class="flip-container">
+							<div class="flipper">
+								<div style="position: absolute;
+								width: 100%;
+								height: 100%;
+								backface-visibility: hidden;
+								font-size: large;
+			font-weight: bold;
+								display: flex;
+			align-items: center;
+			justify-content: center;
+								border-radius: 10px;background: url('images/cp.jpg') no-repeat center/cover;" class="">
+									<div style="background-color: black; padding-left: 5px; padding-right: 5px;">
+										Competitive Programming</div>
+								</div>
+								<div style="font-size: small;line-height: 1.2;padding-left: 5px; padding-right: 5px; "
+									class="back">I have a 1672 rating on CodeChef, specialize in C/C++, and have solved
+									500+ problems across various competitive programming platforms.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-12-mobile">
+						<div class="flip-container">
+							<div class="flipper">
+								<div style="position: absolute;
+								width: 100%;
+								height: 100%;
+								backface-visibility: hidden;
+								font-size: large;
+			font-weight: bold;
+								display: flex;
+			align-items: center;
+			justify-content: center;
+								border-radius: 10px;background: url('images/frontend.jpg') no-repeat center/cover;" class="">
+									<div style="background-color: black; padding-left: 5px; padding-right: 5px;">
+										Front-end</div>
+								</div>
+								<div style="font-size: small;line-height: 1.2;padding-left: 5px; padding-right: 5px; "
+									class="back">Skilled in React.js, JavaScript, HTML, CSS, and Tailwind. Experienced
+									in building dynamic & interactive Websites</div>
+							</div>
+						</div>
+						<div class="flip-container">
+							<div class="flipper">
+								<div style="position: absolute;
+								width: 100%;
+								height: 100%;
+								backface-visibility: hidden;
+								font-size: large;
+			font-weight: bold;
+								display: flex;
+			align-items: center;
+			justify-content: center;
+								border-radius: 10px;background: url('images/language.jpg') no-repeat center/cover;" class="">
+									<div style="background-color: black; padding-left: 5px; padding-right: 5px;">
+										Language</div>
+								</div>
+								<div style="font-size: small;line-height: 1.2;padding-left: 5px; padding-right: 5px; "
+									class="back">Hindi – Native Proficiency <br>
+
+									English – Professional Working Proficiency</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-4 col-12-mobile">
+
+						<div class="flip-container">
+							<div class="flipper">
+								<div style="position: absolute;
+								width: 100%;
+								height: 100%;
+								backface-visibility: hidden;
+								font-size: large;
+			font-weight: bold;
+								display: flex;
+			align-items: center;
+			justify-content: center;
+								border-radius: 10px;background: url('images/backend.jpg') no-repeat center/cover;" class="">
+									<div style="background-color: black; padding-left: 5px; padding-right: 5px;">
+										Back-end</div>
+								</div>
+								<div style="font-size: small;line-height: 1.2;padding-left: 5px; padding-right: 5px; "
+									class="back">Proficient in Node.js, Express.js, and MongoDB, with experience in
+									building secure and scalable RESTful APIs and microservices.</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- About Me -->
+		<section style="margin-bottom: 3px;" id="about" class="three">
+			<div class="container">
+
+				<header>
+					<h2 style="color: aliceblue; font-weight: 500;">
+						P&nbsp;R&nbsp;O&nbsp;J&nbsp;E&nbsp;C&nbsp;T&nbsp;S</h2>
+					<h4 style="font-weight: 500;">WHAT I HAVE DONE</h4>
+
+
+				</header>
+				<div style="flex-direction: row; display: flex; justify-content: space-between;">
+					<div style="display: flex;  flex-direction: column;" class="bx contain">
+						<div style="display: flex; width: 400px; cursor: pointer;  flex-direction: column; border: 1pt solid rgb(151, 151, 155);"
+							onclick="window.open('https://github.com/joshi232004manish/shelter_seeker', '_blank')"
+							class="image-contain">
+							<img class="img" style="width:100%  " src="./images/shelterseeker.png" alt="">
+
+							<div
+								style=" width:400px; background-color:  rgb(7, 7, 7);   font-size: medium; width: 100%; ">
+								<p
+									style="  padding: ; margin-bottom: 0px; line-height: 1.5; padding: 15px; text-align: left;  ">
+									• Built a platform where Real-estate Owners can sell their property.
+									<br>
+									• JWT-based authentication ensures secure user login, signup, and profile
+									management. <br>
+									• Redux Toolkit manages global state for user data, property listings, and
+									form submissions efficiently. <br>
+									• Built with React, the app features a modern, responsive design for seamless
+									navigation across devices.
+								</p>
+								<footer style="color: aliceblue; font-weight: 600; font-family: 'Poppins';">NodeJs,
+									React, Redux, MongoDb
+								</footer>
+							</div>
+						</div>
+						<div style="" class="text-overlay ">
+							<p style="font-size: x-large; font-weight: 600; margin-bottom: 0;">SHELTER SEEKER </p>
+							<p style="color: rgb(170, 169, 169);font-weight: 600;">A Real Estate MarketPlace</p>
+						</div>
+					</div>
+					<div style="display: flex;  flex-direction: column;" class="bx contain">
+						<div style="display: flex; width: 400px;  flex-direction: column; border: 1pt solid rgb(151, 151, 155); cursor: pointer;"
+							onclick="window.open('https://github.com/joshi232004manish/GC25_Webathon', '_blank')"
+							class="image-contain">
+							<img class="img" style="width:100%  " src="./images/grocery.png" alt="">
+
+							<div
+								style=" width:400px; background-color:  rgb(7, 7, 7);   font-size: medium; width: 100%; ">
+								<p
+									style="  padding: ; margin-bottom: 0px; line-height: 1.5; padding: 15px; text-align: left;  ">
+									• Developed a grocery store platform enabling students to conveniently
+									order groceries and stationery items from sellers. <br>
+									• Implemented WebSockets for real-time chat functionality. <br>
+
+									• Built reusable, modular components with React hooks for efficient UI/UX. <br>
+
+									• Integrated Razorpay for secure and seamless online payments.</p>
+								<footer style="color: aliceblue; font-weight: 600; font-family: 'Poppins';">NodeJs,
+									React, Redux, RazorPay, Websockets, MongoDb</footer>
+							</div>
+						</div>
+						<div style="" class="text-overlay ">
+							<p style="font-size: x-large; font-weight: 600; margin-bottom: 0;">GET IT </p>
+							<p style="color: rgb(170, 169, 169);font-weight: 600;">A Grocery MarketPlace</p>
+						</div>
+					</div>
+
+				</div>
+
+
+
+			</div>
+		</section>
+		<section id="about" style="margin-bottom: 3px;" class="three">
+			<header>
+				<h2 style="color: aliceblue; font-weight: 500;">
+					E&nbsp;D&nbsp;U&nbsp;C&nbsp;A&nbsp;T&nbsp;I&nbsp;O&nbsp;N</h2>
+				<h4 style="font-weight: 500;">WHAT ARE MY QUALIFICATIONS</h4>
+
+
+			</header>
+			<div class="education-container">
+
+				<!-- Box 1 -->
+				<div class="edu-card">
+					<h3 style="color: rgb(148, 149, 151);">Bachelor of Technology in Electrical Engineering - 7.45/10
+					</h3>
+					<p class="place">IIT Bhubaneswar</p>
+					<span class="date">Oct 2022 – June 2026</span>
+				</div>
+
+				<!-- Box 2 -->
+				<div class="edu-card">
+					<h3 style="color: rgb(148, 149, 151);">All India Senior School Certificate Examination - 91.6/100
+					</h3>
+					<p class="place">Arihant Public School, Kota</p>
+					<span class="date">Oct 2020 – Mar 2022</span>
+				</div>
+
+				<!-- Box 3 -->
+				<div class="edu-card">
+					<h3 style="color: rgb(148, 149, 151);">All India Secondary School Examination - 94.8/100</h3>
+					<p class="place">Acharyakulam, Haridwar</p>
+					<span class="date">Sep 2020</span>
+				</div>
+
+			</div>
+
+
+
+		</section>
+		<section id="contact" class="three">
+			<div class="container">
+
+				<header>
+					<h2 style="color: aliceblue; font-weight: 500;">
+						C O N T A C T</h2>
+					<h4 style="font-weight: 500;">HOW CAN YOU REACH</h4>
+	
+	
+				</header>
+
+				<div class="contact-container">
+					<!-- WhatsApp Box -->
+					<div class="contact-box" onclick="window.open('https://api.whatsapp.com/send?phone=918791852055', '_blank')">
+					  <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp Logo">
+					  <p>WhatsApp</p>
+					</div>
+				
+					<!-- Phone Box -->
+					<div class="contact-box">
+					  <img style=" border-radius: 15px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYvOGY17r9bwOl3TvNUPjRVE5H53FCcjt9Q&s" alt="Phone Logo">
+					  <p>(+91) 87918 52055</p>
+					</div>
+				
+					<!-- Gmail Box -->
+					<div class="contact-box">
+					  <img  onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=manishjoshi232004@gmail.com', '_blank')" src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Gmail Logo">
+					  <p>Gmail</p>
+					</div>
+				
+					<!-- LinkedIn Box -->
+					<div onclick="window.open('https://www.linkedin.com/in/manish-joshi-712948261/', '_blank')"  class="contact-box">
+					  <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn Logo">
+					  <p>LinkedIn</p>
+					</div>
+				  </div>
+
+			</div>
+		</section>
+
+		<!-- Contact -->
+
+
+	</div>
+
+	<!-- Footer -->
+	
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
